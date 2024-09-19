@@ -27,7 +27,6 @@ player_camera = NodePath("../Player/PlayerCamera")
 world_camera = NodePath("../WorldCamera")
 
 [node name="Player" parent="." instance=ExtResource("1_q4ndm")]
-SPEED = 600.0
 
 [node name="PlayerCamera" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true

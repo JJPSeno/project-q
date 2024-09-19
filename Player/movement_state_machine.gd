@@ -40,18 +40,31 @@ var new_velocity := Vector2.ZERO
 
 func _ready() -> void:
 	current_state_name = "run"
-	print_debug(movement_states[current_state_name].speed)
-	for s in movement_states:
-		print_debug(movement_states[s])
 
 
 func change_state(state_name: String) -> void:
 	current_state_name = state_name
+	if parent.is_in_group("player"):
+		EventBus.player_state_updated.emit(state_name)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("left","right","up","down")
 	target_velocity = direction * movement_states[current_state_name].speed
+	EventBus.position_updated.emit("x: %03.0f, y: %03.0f" % [parent.global_position.x, parent.global_position.y])
+	previous_velocity = parent.velocity
+	new_velocity = \
+		parent.velocity.lerp( \
+			target_velocity, \
+			1 - exp(-(movement_states[current_state_name].acceleration * \
+			movement_states[current_state_name].friction) * delta) \
+		)
+	
+	if (previous_velocity != new_velocity):
+		EventBus.speed_updated.emit("%03.0f" % [new_velocity.length()])
+		parent.velocity = new_velocity
+	
+	parent.move_and_slide()
 
 func _exit_state(state_name: String) -> void:
 	pass

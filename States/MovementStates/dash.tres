@@ -6,7 +6,7 @@
 script = ExtResource("1_37jfi")
 name = "dash"
 id = 3
-speed = 800.0
-camera_zoon = Vector2(0.6, 0.6)
-acceleration = 30.0
-friction = 3.0
+speed = 4500.0
+camera_zoom = Vector2(0.6, 0.6)
+acceleration = 4500.0
+friction = 1.0

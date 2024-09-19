@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://dff0j6n77jhyg"]
+
+[ext_resource type="Script" path="res://Player/movement_state_machine.gd" id="1_ceiam"]
+[ext_resource type="Script" path="res://Controllers/MovementController/movement_controller.gd" id="1_makro"]
+[ext_resource type="Resource" uid="uid://bymv1e5uakhye" path="res://States/MovementStates/idle.tres" id="2_rl13b"]
+[ext_resource type="Resource" uid="uid://7k4h71634wf7" path="res://States/MovementStates/walk.tres" id="3_5ijnh"]
+[ext_resource type="Resource" uid="uid://csqgcgbjwwur8" path="res://States/MovementStates/run.tres" id="4_io8pf"]
+[ext_resource type="Resource" uid="uid://bosgu1a03orev" path="res://States/MovementStates/dash.tres" id="5_cxd8d"]
+
+[node name="MovementController" type="Node"]
+script = ExtResource("1_makro")
+
+[node name="MovementStateMachine" type="Node" parent="."]
+script = ExtResource("1_ceiam")
+movement_states = {
+"dash": ExtResource("5_cxd8d"),
+"idle": ExtResource("2_rl13b"),
+"run": ExtResource("4_io8pf"),
+"walk": ExtResource("3_5ijnh")
+}

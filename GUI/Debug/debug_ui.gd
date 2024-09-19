@@ -7,7 +7,8 @@ const DEBUG_ITEM = preload("res://GUI/Debug/debug_item.tscn")
 
 func _ready() -> void:
 	add_debug_item("speed","value", EventBus.speed_updated)
-	add_debug_item("global_pos","value", EventBus.position_updated)
+	add_debug_item("global pos","value", EventBus.position_updated)
+	add_debug_item("player state","run", EventBus.player_state_updated)
 
 # this debug item needs to subscribe to signals
 func add_debug_item(label_name: String, value: String, update_signal = null) -> void:
