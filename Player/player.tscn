@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://5liwdgjjhcr2"]
+
+[ext_resource type="Texture2D" uid="uid://dmnwwojy2t7ik" path="res://icon.svg" id="1_argyb"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_daju6"]
+[ext_resource type="Script" path="res://Player/movement_state_machine.gd" id="3_0ltnl"]
+[ext_resource type="Resource" uid="uid://bymv1e5uakhye" path="res://States/MovementStates/idle.tres" id="3_52177"]
+[ext_resource type="Resource" uid="uid://7k4h71634wf7" path="res://States/MovementStates/walk.tres" id="4_l1xc1"]
+[ext_resource type="Resource" uid="uid://csqgcgbjwwur8" path="res://States/MovementStates/run.tres" id="5_nlny1"]
+[ext_resource type="Resource" uid="uid://bosgu1a03orev" path="res://States/MovementStates/dash.tres" id="6_7la31"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrudf"]
+radius = 15.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_daju6")
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("3_0ltnl")
+movement_states = {
+"dash": ExtResource("6_7la31"),
+"idle": ExtResource("3_52177"),
+"run": ExtResource("5_nlny1"),
+"walk": ExtResource("4_l1xc1")
+}
+parent = NodePath("..")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_argyb")
+
+[node name="Polygon2D" type="Polygon2D" parent="Icon"]
+position = Vector2(0, -70)
+color = Color(0.211765, 0.239216, 0.321569, 1)
+polygon = PackedVector2Array(0, -50, -30, -10, 30, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hrudf")

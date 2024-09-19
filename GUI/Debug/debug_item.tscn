@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4o4qur46jlpd"]
+
+[ext_resource type="Script" path="res://GUI/Debug/debug_item.gd" id="1_bd72o"]
+[ext_resource type="Theme" uid="uid://ci02ymefjax3o" path="res://Themes/FontThemes/debug_font.tres" id="1_xicvw"]
+
+[node name="DebugItem" type="HBoxContainer"]
+script = ExtResource("1_bd72o")
+
+[node name="name_label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_xicvw")
+text = "TEST NAME"
+
+[node name="value_label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_xicvw")
+text = "TEST VALUE"

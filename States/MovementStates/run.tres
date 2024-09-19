@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MovementState" load_steps=2 format=3 uid="uid://csqgcgbjwwur8"]
+
+[ext_resource type="Script" path="res://States/MovementStates/movement_state.gd" id="1_fbbvw"]
+
+[resource]
+script = ExtResource("1_fbbvw")
+name = "run"
+id = 2
+speed = 200.0
+camera_zoon = Vector2(0.7, 0.7)
+acceleration = 12.0
+friction = 6.0

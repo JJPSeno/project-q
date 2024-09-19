@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bies7lf8gaipr"]
+
+[ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/CameraController/camera_controller.tscn" id="1_bdx5k"]
+[ext_resource type="PackedScene" uid="uid://5liwdgjjhcr2" path="res://Player/player.tscn" id="1_q4ndm"]
+[ext_resource type="Script" path="res://Controllers/CameraController/camera_controller.gd" id="2_iu3vl"]
+[ext_resource type="PackedScene" uid="uid://7t16qx7bdmoo" path="res://GUI/main_canvas_layer.tscn" id="4_anaq4"]
+
+[node name="World" type="Node2D"]
+
+[node name="TestFloor" type="Node2D" parent="."]
+
+[node name="Polygon2D3" type="Polygon2D" parent="TestFloor"]
+color = Color(1, 1, 0.458824, 1)
+polygon = PackedVector2Array(-1191, 1809, 1694, 1865, 2067, -1189, -580, -1370, -2458, 508)
+
+[node name="Polygon2D" type="Polygon2D" parent="TestFloor"]
+color = Color(0.627451, 1, 1, 1)
+polygon = PackedVector2Array(-1157, -126, 1784, -431, 2011, 508, 427, 1198, -1564, 711)
+
+[node name="Polygon2D2" type="Polygon2D" parent="TestFloor"]
+color = Color(1, 0.631373, 1, 1)
+polygon = PackedVector2Array(-433, -262, -920, 972, 698, 881, 1535, 1254, 1151, -850)
+
+[node name="CameraController" parent="." node_paths=PackedStringArray("player_camera", "world_camera") instance=ExtResource("1_bdx5k")]
+script = ExtResource("2_iu3vl")
+player_camera = NodePath("../Player/PlayerCamera")
+world_camera = NodePath("../WorldCamera")
+
+[node name="Player" parent="." instance=ExtResource("1_q4ndm")]
+SPEED = 600.0
+
+[node name="PlayerCamera" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="WorldCamera" type="Camera2D" parent="."]
+enabled = false
+
+[node name="MainCanvasLayer" parent="." instance=ExtResource("4_anaq4")]
