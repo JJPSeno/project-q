@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://7t16qx7bdmoo"]
-
-[ext_resource type="Script" path="res://GUI/main_canvas_layer.gd" id="1_y35jt"]
-[ext_resource type="PackedScene" uid="uid://bt3gkxaqlb0wy" path="res://GUI/Debug/debug_ui.tscn" id="2_a2c84"]
-
-[node name="MainCanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_y35jt")
-
-[node name="DebugUI" parent="." instance=ExtResource("2_a2c84")]

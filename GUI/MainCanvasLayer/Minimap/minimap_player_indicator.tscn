@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://mpmewmghiihe"]
+
+[ext_resource type="Texture2D" uid="uid://dl7sbgwsho858" path="res://Assets/Branding/DiamondIcon.png" id="1_j6lwv"]
+
+[node name="MinimapPlayerIndicator" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j6lwv")

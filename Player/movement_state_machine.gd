@@ -19,6 +19,7 @@ states = {
 		id : int
 		speed := float
 		camera_zoom := Vector2
+		camera_speed := float
 		acceleration := float
 		friction := float
 	}
@@ -26,9 +27,9 @@ states = {
 """
 #endregion
 @export var movement_states : Dictionary
-@export var parent : CharacterBody2D
 var current_state_name : String
-
+var movement_controller : Node
+var parent : Node2D
 var direction := Vector2.ZERO
 var speed = 200.0
 var acceleration := 12.0
@@ -39,6 +40,8 @@ var new_velocity := Vector2.ZERO
 
 
 func _ready() -> void:
+	movement_controller = get_parent()
+	parent = movement_controller.parent
 	current_state_name = "run"
 
 
@@ -46,6 +49,7 @@ func change_state(state_name: String) -> void:
 	current_state_name = state_name
 	if parent.is_in_group("player"):
 		EventBus.player_state_updated.emit(state_name)
+		EventBus.camera_zoom_updated.emit(movement_states[current_state_name].camera_zoom, movement_states[current_state_name].camera_speed)
 
 
 func _physics_process(delta: float) -> void:
@@ -66,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	
 	parent.move_and_slide()
 
-func _exit_state(state_name: String) -> void:
+func _exit_state(_state_name: String) -> void:
 	pass
 	
 

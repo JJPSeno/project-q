@@ -1,25 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://5liwdgjjhcr2"]
+[gd_scene load_steps=6 format=3 uid="uid://5liwdgjjhcr2"]
 
-[ext_resource type="Texture2D" uid="uid://dmnwwojy2t7ik" path="res://icon.svg" id="1_argyb"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_t54ku"]
+[ext_resource type="PackedScene" uid="uid://cdbkt3ih37ybm" path="res://Controllers/DirectionController/direction_controller.tscn" id="2_fyewk"]
 [ext_resource type="PackedScene" uid="uid://dff0j6n77jhyg" path="res://Controllers/MovementController/movement_controller.tscn" id="2_qxbrg"]
+[ext_resource type="Texture2D" uid="uid://dl7sbgwsho858" path="res://Assets/Branding/DiamondIcon.png" id="4_f6ucb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hrudf"]
 radius = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+modulate = Color(0.86, 0.86, 0.86, 1)
+script = ExtResource("1_t54ku")
 
-[node name="MovementController" parent="." instance=ExtResource("2_qxbrg")]
+[node name="MovementController" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_qxbrg")]
+parent = NodePath("..")
 
-[node name="MovementStateMachine" parent="MovementController" index="0" node_paths=PackedStringArray("parent")]
-parent = NodePath("../..")
+[node name="DirectionController" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_fyewk")]
+parent = NodePath("..")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_argyb")
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_f6ucb")
+
+[node name="Polygon2D2" type="Polygon2D" parent="Icon"]
+position = Vector2(0.00015928, -26)
+scale = Vector2(-0.631633, 0.662313)
+color = Color(0.981333, 0.86, 1, 1)
+polygon = PackedVector2Array(0, -50, -30, -10, 30, -10)
 
 [node name="Polygon2D" type="Polygon2D" parent="Icon"]
-position = Vector2(0, -70)
-color = Color(0.211765, 0.239216, 0.321569, 1)
+position = Vector2(-8.68798e-05, -24)
+scale = Vector2(0.517403, 0.517403)
+color = Color(0.792, 0.76, 1, 1)
 polygon = PackedVector2Array(0, -50, -30, -10, 30, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

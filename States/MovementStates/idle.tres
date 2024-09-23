@@ -8,5 +8,6 @@ name = "idle"
 id = 0
 speed = 0.0
 camera_zoom = Vector2(1, 1)
+camera_speed = 10.0
 acceleration = 1.0
 friction = 6.0
