@@ -27,7 +27,6 @@ gdscript/warnings/unused_signal=0
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
 mouse_cursor/custom_image="res://Assets/Cursors/ArrowCursorSmall.png"
 
 [global_group]
