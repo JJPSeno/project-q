@@ -11,19 +11,20 @@
 
 [node name="TestFloor" parent="." instance=ExtResource("1_3ps4a")]
 
-[node name="CameraController" parent="." node_paths=PackedStringArray("player_camera", "world_camera") instance=ExtResource("1_bdx5k")]
+[node name="CameraController" parent="." node_paths=PackedStringArray("player_node") instance=ExtResource("1_bdx5k")]
 script = ExtResource("2_iu3vl")
-player_camera = NodePath("../Player/PlayerCamera")
-world_camera = NodePath("../WorldCamera")
+player_node = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("1_q4ndm")]
+[node name="WorldCamera" type="Camera2D" parent="CameraController"]
+unique_name_in_owner = true
+enabled = false
 
-[node name="PlayerCamera" type="Camera2D" parent="Player"]
+[node name="PlayerCamera" type="Camera2D" parent="CameraController"]
+unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="WorldCamera" type="Camera2D" parent="."]
-enabled = false
+[node name="Player" parent="." instance=ExtResource("1_q4ndm")]
 
 [node name="MainCanvasLayer" parent="." instance=ExtResource("4_anaq4")]
 
