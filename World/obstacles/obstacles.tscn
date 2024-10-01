@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://77om2ux5nt02"]
+
+[ext_resource type="Script" path="res://World/obstacles/obstacles.gd" id="1_paaf0"]
+
+[node name="Obstacles" type="StaticBody2D"]
+position = Vector2(65.15, 48.76)
+script = ExtResource("1_paaf0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
