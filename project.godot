@@ -148,4 +148,4 @@ debug_action={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.592157, 0.447059, 0.992157, 1)
+environment/defaults/default_clear_color=Color(0.0134473, 0.000279981, 0, 1)

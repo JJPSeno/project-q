@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://lhqm11dande5"]
 
-[ext_resource type="PackedScene" uid="uid://77om2ux5nt02" path="res://World/obstacles/obstacles.tscn" id="1_ulrb7"]
+[ext_resource type="PackedScene" uid="uid://77om2ux5nt02" path="res://World/Obstacles/obstacles.tscn" id="1_ulrb7"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xkk42"]
 scenes/1/scene = ExtResource("1_ulrb7")

@@ -1,12 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://5liwdgjjhcr2"]
+[gd_scene load_steps=11 format=3 uid="uid://5liwdgjjhcr2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t54ku"]
 [ext_resource type="PackedScene" uid="uid://cdbkt3ih37ybm" path="res://Controllers/DirectionController/direction_controller.tscn" id="2_fyewk"]
 [ext_resource type="PackedScene" uid="uid://dff0j6n77jhyg" path="res://Controllers/MovementController/movement_controller.tscn" id="2_qxbrg"]
-[ext_resource type="Texture2D" uid="uid://dl7sbgwsho858" path="res://Assets/Branding/DiamondIcon.png" id="4_f6ucb"]
+[ext_resource type="Texture2D" uid="uid://c25qlso7presn" path="res://Assets/Player/cape2.png" id="4_wlr4d"]
+[ext_resource type="Texture2D" uid="uid://bo6uluwlfq4u2" path="res://Assets/Player/cape1.png" id="5_yk7be"]
+[ext_resource type="Texture2D" uid="uid://bjftovq844y6n" path="res://Assets/Player/gun.png" id="6_8gtic"]
+[ext_resource type="Texture2D" uid="uid://c08sui0c2gn88" path="res://Assets/Player/player.png" id="7_78jdo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4a0ob"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51om5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hrudf"]
-radius = 15.0
+radius = 18.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.86, 0.86, 0.86, 1)
@@ -21,24 +28,69 @@ parent = NodePath("..")
 [node name="DirectionController" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_fyewk")]
 parent = NodePath("..")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="CompositeSprite" type="Node2D" parent="."]
+position = Vector2(-5, 13)
 rotation = 1.5708
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_f6ucb")
+scale = Vector2(0.65, 0.65)
 
-[node name="Polygon2D2" type="Polygon2D" parent="Icon"]
-position = Vector2(0.00015928, -26)
-scale = Vector2(-0.631633, 0.662313)
-color = Color(0.981333, 0.86, 1, 1)
-polygon = PackedVector2Array(0, -50, -30, -10, 30, -10)
+[node name="Gun" type="Sprite2D" parent="CompositeSprite"]
+position = Vector2(2.99999, -46)
+rotation = -0.0290565
+scale = Vector2(0.999999, 0.999999)
+texture = ExtResource("6_8gtic")
 
-[node name="Polygon2D" type="Polygon2D" parent="Icon"]
-position = Vector2(-8.68798e-05, -24)
-scale = Vector2(0.517403, 0.517403)
-color = Color(0.792, 0.76, 1, 1)
-polygon = PackedVector2Array(0, -50, -30, -10, 30, -10)
+[node name="RigidCape2" type="RigidBody2D" parent="CompositeSprite"]
+visible = false
+position = Vector2(-4.61525, 38.4616)
+rotation = -1.12089
+scale = Vector2(0.999999, 0.999999)
+collision_layer = 0
+collision_mask = 0
+mass = 11.0
+gravity_scale = 0.0
+
+[node name="Cape2" type="Sprite2D" parent="CompositeSprite/RigidCape2"]
+position = Vector2(26.5516, -26.5477)
+texture = ExtResource("4_wlr4d")
+offset = Vector2(-26.5516, 26.5477)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompositeSprite/RigidCape2"]
+shape = SubResource("CircleShape2D_4a0ob")
+
+[node name="Cape2PinJoint" type="PinJoint2D" parent="CompositeSprite"]
+position = Vector2(-15.3846, 4.61544)
+node_a = NodePath("../..")
+node_b = NodePath("../RigidCape2")
+
+[node name="RigidCape1" type="RigidBody2D" parent="CompositeSprite"]
+position = Vector2(-18.4616, -12.3076)
+rotation = -0.973804
+scale = Vector2(0.999999, 0.999999)
+collision_layer = 0
+collision_mask = 0
+mass = 11.0
+gravity_scale = 0.0
+
+[node name="Cape1" type="Sprite2D" parent="CompositeSprite/RigidCape1"]
+position = Vector2(26.4511, -23.0875)
+texture = ExtResource("5_yk7be")
+offset = Vector2(-26.4511, 23.0875)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompositeSprite/RigidCape1"]
+shape = SubResource("CircleShape2D_51om5")
+
+[node name="Cap" type="Sprite2D" parent="CompositeSprite"]
+texture_filter = 1
+position = Vector2(-20.0001, -37.7778)
+texture = ExtResource("7_78jdo")
+
+[node name="Cape1PinJoint" type="PinJoint2D" parent="CompositeSprite"]
+position = Vector2(-21.5385, -18.4615)
+node_a = NodePath("../..")
+node_b = NodePath("../RigidCape1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 0)
 shape = SubResource("CircleShape2D_hrudf")
 
 [editable path="MovementController"]
