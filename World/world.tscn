@@ -1,29 +1,72 @@
-[gd_scene load_steps=7 format=3 uid="uid://bies7lf8gaipr"]
+[gd_scene load_steps=10 format=4 uid="uid://bies7lf8gaipr"]
 
-[ext_resource type="PackedScene" uid="uid://bkujnupcoa074" path="res://World/Background/test_floor.tscn" id="1_3ps4a"]
 [ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/CameraController/camera_controller.tscn" id="1_bdx5k"]
 [ext_resource type="PackedScene" uid="uid://5liwdgjjhcr2" path="res://Player/player.tscn" id="1_q4ndm"]
 [ext_resource type="Script" path="res://Controllers/CameraController/camera_controller.gd" id="2_iu3vl"]
+[ext_resource type="PackedScene" uid="uid://lhqm11dande5" path="res://World/Obstacles/obstacle_tilemap.tscn" id="2_tj0or"]
 [ext_resource type="PackedScene" uid="uid://7t16qx7bdmoo" path="res://GUI/MainCanvasLayer/main_canvas_layer.tscn" id="4_anaq4"]
 [ext_resource type="PackedScene" uid="uid://bf06v3pe65dgu" path="res://GUI/MainCanvasLayer/Minimap/Minimap.tscn" id="6_ci66x"]
+[ext_resource type="Shader" path="res://Shaders/pixelate.gdshader" id="8_vniwf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_moc7l"]
+shader = ExtResource("8_vniwf")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 0.1
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.264
+shader_parameter/pixelSize = 512.0
+shader_parameter/grainIntensity = 0.02
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(0.468743, 0.561297, 0.774257, 1)
+shader_parameter/lens_distortion_strength = 0.0
+
+[sub_resource type="Environment" id="Environment_6syww"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/3 = 0.0
+glow_levels/5 = 0.0
+glow_strength = 0.8
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 3.0
+adjustment_enabled = true
 
 [node name="World" type="Node2D"]
 
-[node name="TestFloor" parent="." instance=ExtResource("1_3ps4a")]
+[node name="GameCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CameraController" parent="." node_paths=PackedStringArray("player_camera", "world_camera") instance=ExtResource("1_bdx5k")]
+[node name="ColorRect" type="ColorRect" parent="GameCanvasLayer"]
+material = SubResource("ShaderMaterial_moc7l")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6syww")
+
+[node name="ObstacleTilemap" parent="." instance=ExtResource("2_tj0or")]
+tile_map_data = PackedByteArray("AAAuAPX/AAAAAAAAAQD//yMAAAAAAAAAAQDc/xkAAAAAAAAAAQDL/+7/AAAAAAAAAQD9/8D/AAAAAAAAAQBYAMb/AAAAAAAAAQCJAAsAAAAAAAAAAQA5AFcAAAAAAAAAAQC//0YAAAAAAAAAAQCT//j/AAAAAAAAAQDA/7H/AAAAAAAAAQA7AJL/AAAAAAAAAQA7AJH/AAAAAAAAAQCsANb/AAAAAAAAAQCpAFcAAAAAAAAAAQDS/3MAAAAAAAAAAQB4/0gAAAAAAAAAAQCF/5P/AAAAAAAAAQD5/3H/AAAAAAAAAQA=")
+
+[node name="CameraController" parent="." node_paths=PackedStringArray("player_node") instance=ExtResource("1_bdx5k")]
 script = ExtResource("2_iu3vl")
-player_camera = NodePath("../Player/PlayerCamera")
-world_camera = NodePath("../WorldCamera")
+player_node = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("1_q4ndm")]
+[node name="WorldCamera" type="Camera2D" parent="CameraController"]
+unique_name_in_owner = true
+enabled = false
 
-[node name="PlayerCamera" type="Camera2D" parent="Player"]
+[node name="PlayerCamera" type="Camera2D" parent="CameraController"]
+unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="WorldCamera" type="Camera2D" parent="."]
-enabled = false
+[node name="Player" parent="." instance=ExtResource("1_q4ndm")]
 
 [node name="MainCanvasLayer" parent="." instance=ExtResource("4_anaq4")]
 

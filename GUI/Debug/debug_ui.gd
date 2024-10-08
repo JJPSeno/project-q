@@ -9,6 +9,8 @@ func _ready() -> void:
 	add_debug_item("speed","value", EventBus.speed_updated)
 	add_debug_item("global pos","value", EventBus.position_updated)
 	add_debug_item("player state","run", EventBus.player_state_updated)
+	add_debug_item("camera pos","value", EventBus.camera_pos_updated)
+	add_debug_item("mouse pos","value", EventBus.mouse_pos_updated)
 
 # this debug item needs to subscribe to signals
 func add_debug_item(label_name: String, value: String, update_signal = null) -> void:

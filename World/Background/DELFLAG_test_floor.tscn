@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkujnupcoa074"]
 
 [node name="TestFloor" type="Node2D"]
+modulate = Color(0.909293, 0.94, 0.4794, 0.913725)
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]
 position = Vector2(-2422, -318)

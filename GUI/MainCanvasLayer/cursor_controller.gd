@@ -4,6 +4,7 @@ const BOX_CURSOR = preload("res://Assets/Cursors/BoxCursorSmall.png")
 const ARROW_CURSOR = preload("res://Assets/Cursors/ArrowCursorSmall.png")
 
 func _ready() -> void:
+	_set_to_box_cursor()
 	EventBus.connect("change_to_arrow_cursor", _set_to_arrow_cursor)
 	EventBus.connect("change_to_box_cursor", _set_to_box_cursor)
 
