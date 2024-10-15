@@ -1,4 +1,4 @@
-class_name MovementState
+class_name InputMovementState
 extends Resource
 
 @export var name : String

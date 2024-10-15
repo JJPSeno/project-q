@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4s4ypiv7hikj"]
+
+[ext_resource type="Script" path="res://Controllers/PlayerAbilityController/player_ability_controller.gd" id="1_wvmhy"]
+
+[node name="PlayerAbilityController" type="Node"]
+script = ExtResource("1_wvmhy")
