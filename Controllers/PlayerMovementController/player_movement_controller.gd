@@ -1,4 +1,4 @@
-class_name MovementController
+class_name PlayerMovementController
 extends Node
 
 
@@ -6,7 +6,6 @@ extends Node
 @export var input_movement_states : Dictionary
 @export var ability_movement_states : Dictionary
 @onready var input_movement_state_machine: InputMovementStateMachine = $InputMovementStateMachine
-
 @onready var ability_movement_state_machine: AbilityMovementStateMachine = $AbilityMovementStateMachine
 
 #try to add this to func _input

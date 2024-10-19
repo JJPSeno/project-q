@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4s4ypiv7hikj"]
+[gd_scene load_steps=3 format=3 uid="uid://b4s4ypiv7hikj"]
 
 [ext_resource type="Script" path="res://Controllers/PlayerAbilityController/player_ability_controller.gd" id="1_wvmhy"]
+[ext_resource type="Script" path="res://Player/input_ability_state_machine.gd" id="2_7sdvk"]
 
 [node name="PlayerAbilityController" type="Node"]
 script = ExtResource("1_wvmhy")
+
+[node name="InputAbilityStateMachine" type="Node" parent="."]
+script = ExtResource("2_7sdvk")

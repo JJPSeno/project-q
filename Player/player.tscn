@@ -33,7 +33,8 @@ input_movement_states = {
 "walk": ExtResource("5_d40nl")
 }
 
-[node name="PlayerAbilityController" parent="." instance=ExtResource("6_hsx6x")]
+[node name="PlayerAbilityController" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("6_hsx6x")]
+parent = NodePath("..")
 
 [node name="CompositeSprite" type="Node2D" parent="."]
 position = Vector2(-5, 13)

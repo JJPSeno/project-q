@@ -13,11 +13,11 @@ func _ready() -> void:
 
 
 
-func change_state(state_name: String) -> void:
+func change_state(_state_name: String) -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 
 
