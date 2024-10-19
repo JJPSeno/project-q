@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="MovementState" load_steps=2 format=3 uid="uid://bosgu1a03orev"]
 
-[ext_resource type="Script" path="res://States/MovementStates/movement_state.gd" id="1_37jfi"]
+[ext_resource type="Script" path="res://States/InputMovementStates/input_movement_state.gd" id="1_37jfi"]
 
 [resource]
 script = ExtResource("1_37jfi")
 name = "dash"
 id = 3
-speed = 2000.0
-camera_zoom = Vector2(1, 1)
-camera_speed = 40.0
+speed = 3000.0
+camera_zoom = Vector2(0.9, 0.9)
+camera_speed = 5.0
 acceleration = 4500.0
 friction = 1.0

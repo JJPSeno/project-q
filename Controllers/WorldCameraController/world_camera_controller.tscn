@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bslob6terfaas"]
+
+[ext_resource type="Script" path="res://Controllers/WorldCameraController/world_camera_controller.gd" id="1_wks67"]
+
+[node name="WorldCameraController" type="Node2D"]
+script = ExtResource("1_wks67")

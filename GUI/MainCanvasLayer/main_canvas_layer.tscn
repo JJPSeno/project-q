@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://7t16qx7bdmoo"]
+[gd_scene load_steps=5 format=3 uid="uid://7t16qx7bdmoo"]
 
 [ext_resource type="Script" path="res://GUI/MainCanvasLayer/main_canvas_layer.gd" id="1_y35jt"]
 [ext_resource type="PackedScene" uid="uid://bt3gkxaqlb0wy" path="res://GUI/Debug/debug_ui.tscn" id="2_a2c84"]
 [ext_resource type="Script" path="res://GUI/MainCanvasLayer/cursor_controller.gd" id="2_n47oc"]
+[ext_resource type="PackedScene" uid="uid://jsn8fucdjm8c" path="res://GUI/MainCanvasLayer/Pause/pause_ui.tscn" id="4_4r1dx"]
 
 [node name="MainCanvasLayer" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_y35jt")
 
 [node name="CursorController" type="Node" parent="."]
 script = ExtResource("2_n47oc")
 
 [node name="DebugUI" parent="." instance=ExtResource("2_a2c84")]
+
+[node name="PauseUI" parent="." instance=ExtResource("4_4r1dx")]
+visible = false

@@ -1,4 +1,4 @@
-class_name MovementStateMachine
+class_name InputMovementStateMachine
 extends Node
 
 
@@ -26,7 +26,7 @@ states = {
 }
 """
 #endregion
-@export var movement_states : Dictionary
+var movement_states : Dictionary
 var current_state_name : String
 var movement_controller : Node
 var parent : Node2D
@@ -41,6 +41,7 @@ var new_velocity := Vector2.ZERO
 
 func _ready() -> void:
 	movement_controller = get_parent()
+	movement_states = movement_controller.input_movement_states
 	parent = movement_controller.parent
 	current_state_name = "run"
 
@@ -74,6 +75,6 @@ func _exit_state(_state_name: String) -> void:
 	pass
 	
 
-func _get_current_state() -> MovementState:
+func _get_current_state() -> InputMovementState:
 	return movement_states[current_state_name]
 	

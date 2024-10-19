@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://bies7lf8gaipr"]
+[gd_scene load_steps=9 format=4 uid="uid://bies7lf8gaipr"]
 
-[ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/CameraController/camera_controller.tscn" id="1_bdx5k"]
+[ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/WorldCameraController/world_camera_controller.tscn" id="1_bdx5k"]
 [ext_resource type="PackedScene" uid="uid://5liwdgjjhcr2" path="res://Player/player.tscn" id="1_q4ndm"]
-[ext_resource type="Script" path="res://Controllers/CameraController/camera_controller.gd" id="2_iu3vl"]
 [ext_resource type="PackedScene" uid="uid://lhqm11dande5" path="res://World/Obstacles/obstacle_tilemap.tscn" id="2_tj0or"]
 [ext_resource type="PackedScene" uid="uid://7t16qx7bdmoo" path="res://GUI/MainCanvasLayer/main_canvas_layer.tscn" id="4_anaq4"]
 [ext_resource type="PackedScene" uid="uid://bf06v3pe65dgu" path="res://GUI/MainCanvasLayer/Minimap/Minimap.tscn" id="6_ci66x"]
@@ -36,6 +35,7 @@ glow_hdr_scale = 3.0
 adjustment_enabled = true
 
 [node name="World" type="Node2D"]
+process_mode = 1
 
 [node name="GameCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -51,17 +51,16 @@ grow_vertical = 2
 environment = SubResource("Environment_6syww")
 
 [node name="ObstacleTilemap" parent="." instance=ExtResource("2_tj0or")]
-tile_map_data = PackedByteArray("AAAuAPX/AAAAAAAAAQD//yMAAAAAAAAAAQDc/xkAAAAAAAAAAQDL/+7/AAAAAAAAAQD9/8D/AAAAAAAAAQBYAMb/AAAAAAAAAQCJAAsAAAAAAAAAAQA5AFcAAAAAAAAAAQC//0YAAAAAAAAAAQCT//j/AAAAAAAAAQDA/7H/AAAAAAAAAQA7AJL/AAAAAAAAAQA7AJH/AAAAAAAAAQCsANb/AAAAAAAAAQCpAFcAAAAAAAAAAQDS/3MAAAAAAAAAAQB4/0gAAAAAAAAAAQCF/5P/AAAAAAAAAQD5/3H/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAuAPX/AAAAAAAAAQD//yMAAAAAAAAAAQDc/xkAAAAAAAAAAQDL/+7/AAAAAAAAAQD9/8D/AAAAAAAAAQBYAMb/AAAAAAAAAQCJAAsAAAAAAAAAAQA5AFcAAAAAAAAAAQC//0YAAAAAAAAAAQCT//j/AAAAAAAAAQDA/7H/AAAAAAAAAQA7AJH/AAAAAAAAAQCsANb/AAAAAAAAAQCpAFcAAAAAAAAAAQDS/3MAAAAAAAAAAQB4/0gAAAAAAAAAAQCF/5P/AAAAAAAAAQD5/3H/AAAAAAAAAQA=")
 
-[node name="CameraController" parent="." node_paths=PackedStringArray("player_node") instance=ExtResource("1_bdx5k")]
-script = ExtResource("2_iu3vl")
+[node name="WorldCameraController" parent="." node_paths=PackedStringArray("player_node") instance=ExtResource("1_bdx5k")]
 player_node = NodePath("../Player")
 
-[node name="WorldCamera" type="Camera2D" parent="CameraController"]
+[node name="WorldCamera" type="Camera2D" parent="WorldCameraController"]
 unique_name_in_owner = true
 enabled = false
 
-[node name="PlayerCamera" type="Camera2D" parent="CameraController"]
+[node name="PlayerCamera" type="Camera2D" parent="WorldCameraController"]
 unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
