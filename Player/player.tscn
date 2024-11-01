@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://5liwdgjjhcr2"]
+[gd_scene load_steps=16 format=3 uid="uid://5liwdgjjhcr2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t54ku"]
 [ext_resource type="PackedScene" uid="uid://dff0j6n77jhyg" path="res://Controllers/PlayerMovementController/player_movement_controller.tscn" id="2_qxbrg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bjftovq844y6n" path="res://Assets/Player/gun.png" id="6_8gtic"]
 [ext_resource type="PackedScene" uid="uid://b4s4ypiv7hikj" path="res://Controllers/PlayerAbilityController/player_ability_controller.tscn" id="6_hsx6x"]
 [ext_resource type="Texture2D" uid="uid://c08sui0c2gn88" path="res://Assets/Player/player.png" id="7_78jdo"]
+[ext_resource type="Resource" uid="uid://bdypsqqlqj8c0" path="res://States/InputAbilityStates/wait.tres" id="7_u0ssl"]
+[ext_resource type="Resource" uid="uid://s44d6qf1amd4" path="res://States/InputAbilityStates/dash.tres" id="10_251nf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4a0ob"]
 
@@ -21,7 +23,7 @@ radius = 18.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 modulate = Color(0.86, 0.86, 0.86, 1)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 up_direction = Vector2(1, 0)
 script = ExtResource("1_t54ku")
 
@@ -35,6 +37,10 @@ input_movement_states = {
 
 [node name="PlayerAbilityController" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("6_hsx6x")]
 parent = NodePath("..")
+input_ability_states = {
+"dash": ExtResource("10_251nf"),
+"wait": ExtResource("7_u0ssl")
+}
 
 [node name="CompositeSprite" type="Node2D" parent="."]
 position = Vector2(-5, 13)

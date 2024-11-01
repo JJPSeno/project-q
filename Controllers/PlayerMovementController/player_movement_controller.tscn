@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dff0j6n77jhyg"]
+[gd_scene load_steps=5 format=3 uid="uid://dff0j6n77jhyg"]
 
 [ext_resource type="Script" path="res://Player/input_movement_state_machine.gd" id="1_ceiam"]
 [ext_resource type="Script" path="res://Controllers/PlayerMovementController/player_movement_controller.gd" id="1_makro"]
 [ext_resource type="Script" path="res://Player/ability_movement_state_machine.gd" id="3_6wjeh"]
+[ext_resource type="Script" path="res://States/AbilityMovementStates/dash.gd" id="4_8amhq"]
 
 [node name="PlayerMovementController" type="Node"]
 script = ExtResource("1_makro")
@@ -10,11 +11,14 @@ script = ExtResource("1_makro")
 [node name="InputMovementStateMachine" type="Node" parent="."]
 script = ExtResource("1_ceiam")
 
-[node name="AbilityMovementStateMachine" type="Node" parent="."]
+[node name="AbilityMovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("movement_controller")]
 script = ExtResource("3_6wjeh")
+movement_controller = NodePath("..")
 
-[node name="dash" type="Node2D" parent="AbilityMovementStateMachine"]
+[node name="dash" type="Node2D" parent="AbilityMovementStateMachine" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("4_8amhq")
+state_machine = NodePath("..")
 
 [node name="grapple" type="Node2D" parent="AbilityMovementStateMachine"]
 
-[node name="idle" type="Node2D" parent="AbilityMovementStateMachine"]
+[node name="wait" type="Node2D" parent="AbilityMovementStateMachine"]

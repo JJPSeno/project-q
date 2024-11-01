@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_oexcl")
 name = "dash"
-id = 0
-input_name = "dash"
-signal_name = "player_dash"
+id = 1
+signal_name = "dash_cast"
