@@ -48,9 +48,9 @@ func _ready() -> void:
 
 func change_state(state_name: String) -> void:
 	current_state_name = state_name
-	if parent.is_in_group("player"):
-		EventBus.player_state_updated.emit(state_name)
-		EventBus.camera_zoom_updated.emit(movement_states[current_state_name].camera_zoom, movement_states[current_state_name].camera_speed)
+	#if parent.is_in_group("player"):
+		#EventBus.player_state_updated.emit(state_name)
+		#EventBus.camera_zoom_updated.emit(movement_states[current_state_name].camera_zoom, movement_states[current_state_name].camera_speed)
 
 
 func _physics_process(delta: float) -> void:

@@ -4,7 +4,7 @@
 
 [node name="Obstacles" type="StaticBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_paaf0")
 MIN_POINTS = 12
 MAX_POINTS = 16
