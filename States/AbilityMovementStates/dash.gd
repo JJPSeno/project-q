@@ -13,22 +13,27 @@ var previous_velocity := Vector2.ZERO
 var new_velocity := Vector2.ZERO
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func ability_movement_fire(delta: float) -> void:
+	direction = Input.get_vector("left","right","up","down")
+	target_velocity = direction * speed
+	previous_velocity = state_machine.parent.velocity
+	new_velocity = \
+		state_machine.parent.velocity.lerp( \
+			target_velocity, \
+			1 - exp(-(acceleration * \
+			friction) * delta) \
+		)
+	
+	if (previous_velocity != new_velocity):
+		state_machine.parent.velocity = new_velocity
+	
+	state_machine.parent.move_and_slide()
+	EventBus.no_cast.emit()
+
+
+func enter_state() -> void:
+	print("entered dash")
+
+
+func exit_state() -> void:
 	pass
-	#direction = Input.get_vector("left","right","up","down")
-	#target_velocity = direction * speed
-	#EventBus.position_updated.emit("x: %03.0f, y: %03.0f" % [state_machine.parent.global_position.x, state_machine.parent.global_position.y])
-	#previous_velocity = state_machine.parent.velocity
-	#new_velocity = \
-		#state_machine.parent.velocity.lerp( \
-			#target_velocity, \
-			#1 - exp(-(acceleration * \
-			#friction) * delta) \
-		#)
-	#
-	#if (previous_velocity != new_velocity):
-		#EventBus.speed_updated.emit("%03.0f" % [new_velocity.length()])
-		#state_machine.parent.velocity = new_velocity
-	#
-	#state_machine.parent.move_and_slide()

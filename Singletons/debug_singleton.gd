@@ -11,6 +11,6 @@ func _input(event: InputEvent) -> void:
 			for p in get_tree().get_nodes_in_group("player"):
 				p.set_global_position(Vector2.ZERO)
 		elif event.is_action_pressed("debug_2"):
-			EventBus.emit_signal("change_to_arrow_cursor")
+			EventBus.change_to_arrow_cursor.emit()
 		elif event.is_action_pressed("debug_3"):
-			EventBus.emit_signal("change_to_box_cursor")
+			EventBus.change_to_box_cursor.emit()

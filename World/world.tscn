@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://bies7lf8gaipr"]
+[gd_scene load_steps=8 format=4 uid="uid://bies7lf8gaipr"]
 
 [ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/WorldCameraController/world_camera_controller.tscn" id="1_bdx5k"]
 [ext_resource type="PackedScene" uid="uid://5liwdgjjhcr2" path="res://Player/player.tscn" id="1_q4ndm"]
 [ext_resource type="PackedScene" uid="uid://lhqm11dande5" path="res://World/Obstacles/obstacle_tilemap.tscn" id="2_tj0or"]
 [ext_resource type="PackedScene" uid="uid://7t16qx7bdmoo" path="res://GUI/MainCanvasLayer/main_canvas_layer.tscn" id="4_anaq4"]
-[ext_resource type="PackedScene" uid="uid://bf06v3pe65dgu" path="res://GUI/MainCanvasLayer/Minimap/Minimap.tscn" id="6_ci66x"]
 [ext_resource type="Shader" path="res://Shaders/pixelate.gdshader" id="8_vniwf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_moc7l"]
@@ -68,6 +67,3 @@ position_smoothing_speed = 10.0
 [node name="Player" parent="." instance=ExtResource("1_q4ndm")]
 
 [node name="MainCanvasLayer" parent="." instance=ExtResource("4_anaq4")]
-
-[node name="Minimap" parent="MainCanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_ci66x")]
-player = NodePath("../../Player")

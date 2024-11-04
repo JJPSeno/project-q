@@ -19,10 +19,9 @@ func _ready() -> void:
 
 func change_state(state_name: String) -> void:
 	current_state_name = state_name
-	if parent.is_in_group("player"):
-		pass
+
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 	
 	
@@ -30,6 +29,6 @@ func _exit_state(_state_name: String) -> void:
 	pass
 	
 
-func _get_current_state():# -> InputMovementState:
-	pass
+func _get_current_state() -> InputAbilityState:
+	return ability_states[current_state_name]
 	

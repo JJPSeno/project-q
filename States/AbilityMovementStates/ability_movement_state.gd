@@ -17,13 +17,13 @@ func _ready() -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func ability_movement_fire(_delta: float) -> void:
 	pass
 
 
-func start_physics() -> void:
+func enter_state() -> void:
 	pass
 
 
-func lock_physics() -> void:
+func exit_state() -> void:
 	pass
