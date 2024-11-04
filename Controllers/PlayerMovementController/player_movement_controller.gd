@@ -20,8 +20,13 @@ func _physics_process(_delta: float) -> void:
 
 func _ready() -> void:
 	EventBus.dash_cast.connect(_on_dash_cast)
+	EventBus.no_cast.connect(_on_no_cast)
 
 
 func _on_dash_cast() -> void:
 	if int(parent.velocity.length()) > 0:
 		ability_movement_state_machine.change_state("dash")
+
+
+func _on_no_cast() -> void:
+	ability_movement_state_machine.change_state("wait")
