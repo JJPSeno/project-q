@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://kaba60j2a0aw"]
+
+[ext_resource type="Texture2D" uid="uid://dmo8iie8obsgf" path="res://Assets/Placeholder_Textures/Light/texture_08.png" id="1_htex8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejwcs"]
+size = Vector2(256, 256)
+
+[node name="WorldBoundary" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_htex8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 26
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ejwcs")
