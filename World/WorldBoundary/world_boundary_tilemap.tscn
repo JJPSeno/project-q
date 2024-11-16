@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://j437ndt56laa"]
+
+[ext_resource type="PackedScene" uid="uid://kaba60j2a0aw" path="res://World/WorldBoundary/world_boundary.tscn" id="1_inf5k"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7ea6g"]
+scenes/1/scene = ExtResource("1_inf5k")
+
+[sub_resource type="TileSet" id="TileSet_cuu3u"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetScenesCollectionSource_7ea6g")
+
+[node name="WorldBoundaryTilemap" type="TileMapLayer"]
+tile_set = SubResource("TileSet_cuu3u")

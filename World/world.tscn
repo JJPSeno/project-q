@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bies7lf8gaipr"]
+[gd_scene load_steps=10 format=4 uid="uid://bies7lf8gaipr"]
 
 [ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/WorldCameraController/world_camera_controller.tscn" id="1_bdx5k"]
 [ext_resource type="PackedScene" uid="uid://5liwdgjjhcr2" path="res://Player/player.tscn" id="1_q4ndm"]
 [ext_resource type="PackedScene" uid="uid://lhqm11dande5" path="res://World/Obstacles/obstacle_tilemap.tscn" id="2_tj0or"]
 [ext_resource type="PackedScene" uid="uid://7t16qx7bdmoo" path="res://GUI/MainCanvasLayer/main_canvas_layer.tscn" id="4_anaq4"]
+[ext_resource type="PackedScene" uid="uid://dyiwx1cymfxbb" path="res://Enemy/Ant/ant.tscn" id="5_861rq"]
+[ext_resource type="PackedScene" uid="uid://j437ndt56laa" path="res://World/WorldBoundary/world_boundary_tilemap.tscn" id="7_tj880"]
 [ext_resource type="Shader" path="res://Shaders/pixelate.gdshader" id="8_vniwf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_moc7l"]
@@ -49,6 +51,9 @@ grow_vertical = 2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6syww")
 
+[node name="WorldBoundaryTilemap" parent="." instance=ExtResource("7_tj880")]
+tile_map_data = PackedByteArray("AADu//L/AAAAAAAAAQDv//L/AAAAAAAAAQDw//L/AAAAAAAAAQDx//L/AAAAAAAAAQDy//L/AAAAAAAAAQDz//L/AAAAAAAAAQD0//L/AAAAAAAAAQD1//L/AAAAAAAAAQD2//L/AAAAAAAAAQD3//L/AAAAAAAAAQD4//L/AAAAAAAAAQD5//L/AAAAAAAAAQD6//L/AAAAAAAAAQD7//L/AAAAAAAAAQD8//L/AAAAAAAAAQD9//L/AAAAAAAAAQD+//L/AAAAAAAAAQD///L/AAAAAAAAAQAAAPL/AAAAAAAAAQABAPL/AAAAAAAAAQACAPL/AAAAAAAAAQADAPL/AAAAAAAAAQAEAPL/AAAAAAAAAQAFAPL/AAAAAAAAAQAGAPL/AAAAAAAAAQAHAPL/AAAAAAAAAQAIAPL/AAAAAAAAAQAJAPL/AAAAAAAAAQAKAPL/AAAAAAAAAQALAPL/AAAAAAAAAQAMAPL/AAAAAAAAAQANAPL/AAAAAAAAAQAOAPL/AAAAAAAAAQAPAPL/AAAAAAAAAQAQAPL/AAAAAAAAAQAQAAwAAAAAAAAAAQAQAAsAAAAAAAAAAQAQAAoAAAAAAAAAAQAQAAkAAAAAAAAAAQAQAAgAAAAAAAAAAQAQAAcAAAAAAAAAAQAQAAYAAAAAAAAAAQAQAAUAAAAAAAAAAQAQAAQAAAAAAAAAAQAQAAMAAAAAAAAAAQAQAAIAAAAAAAAAAQAQAAEAAAAAAAAAAQAQAAAAAAAAAAAAAQAQAP//AAAAAAAAAQAQAP7/AAAAAAAAAQAQAP3/AAAAAAAAAQAQAPz/AAAAAAAAAQAQAPv/AAAAAAAAAQAQAPr/AAAAAAAAAQAQAPn/AAAAAAAAAQAQAPj/AAAAAAAAAQAQAPf/AAAAAAAAAQAQAPb/AAAAAAAAAQAQAPX/AAAAAAAAAQAQAPT/AAAAAAAAAQAQAPP/AAAAAAAAAQAPAAwAAAAAAAAAAQAOAAwAAAAAAAAAAQANAAwAAAAAAAAAAQAMAAwAAAAAAAAAAQALAAwAAAAAAAAAAQAKAAwAAAAAAAAAAQAJAAwAAAAAAAAAAQAIAAwAAAAAAAAAAQAHAAwAAAAAAAAAAQAGAAwAAAAAAAAAAQAFAAwAAAAAAAAAAQAEAAwAAAAAAAAAAQADAAwAAAAAAAAAAQACAAwAAAAAAAAAAQABAAwAAAAAAAAAAQAAAAwAAAAAAAAAAQD//wwAAAAAAAAAAQD+/wwAAAAAAAAAAQD9/wwAAAAAAAAAAQD8/wwAAAAAAAAAAQD7/wwAAAAAAAAAAQD6/wwAAAAAAAAAAQD5/wwAAAAAAAAAAQD4/wwAAAAAAAAAAQD3/wwAAAAAAAAAAQD2/wwAAAAAAAAAAQD1/wwAAAAAAAAAAQD0/wwAAAAAAAAAAQDz/wwAAAAAAAAAAQDy/wwAAAAAAAAAAQDx/wwAAAAAAAAAAQDw/wwAAAAAAAAAAQDv/wwAAAAAAAAAAQDu/wwAAAAAAAAAAQDt/wwAAAAAAAAAAQDt/wsAAAAAAAAAAQDt/woAAAAAAAAAAQDt/wkAAAAAAAAAAQDt/wgAAAAAAAAAAQDt/wcAAAAAAAAAAQDt/wYAAAAAAAAAAQDt/wUAAAAAAAAAAQDt/wQAAAAAAAAAAQDt/wMAAAAAAAAAAQDt/wIAAAAAAAAAAQDt/wEAAAAAAAAAAQDt/wAAAAAAAAAAAQDt////AAAAAAAAAQDt//7/AAAAAAAAAQDt//3/AAAAAAAAAQDt//z/AAAAAAAAAQDt//v/AAAAAAAAAQDt//r/AAAAAAAAAQDt//n/AAAAAAAAAQDt//j/AAAAAAAAAQDt//f/AAAAAAAAAQDt//b/AAAAAAAAAQDt//X/AAAAAAAAAQDt//T/AAAAAAAAAQDt//P/AAAAAAAAAQDt//L/AAAAAAAAAQA=")
+
 [node name="ObstacleTilemap" parent="." instance=ExtResource("2_tj0or")]
 tile_map_data = PackedByteArray("AAAuAPX/AAAAAAAAAQD//yMAAAAAAAAAAQDc/xkAAAAAAAAAAQDL/+7/AAAAAAAAAQD9/8D/AAAAAAAAAQBYAMb/AAAAAAAAAQCJAAsAAAAAAAAAAQA5AFcAAAAAAAAAAQC//0YAAAAAAAAAAQCT//j/AAAAAAAAAQDA/7H/AAAAAAAAAQA7AJH/AAAAAAAAAQCsANb/AAAAAAAAAQCpAFcAAAAAAAAAAQDS/3MAAAAAAAAAAQB4/0gAAAAAAAAAAQCF/5P/AAAAAAAAAQD5/3H/AAAAAAAAAQA=")
 
@@ -58,12 +63,38 @@ player_node = NodePath("../Player")
 [node name="WorldCamera" type="Camera2D" parent="WorldCameraController"]
 unique_name_in_owner = true
 enabled = false
+limit_left = -4720
+limit_top = -3472
+limit_right = 4224
+limit_bottom = 3200
 
 [node name="PlayerCamera" type="Camera2D" parent="WorldCameraController"]
 unique_name_in_owner = true
+limit_left = -4720
+limit_top = -3472
+limit_right = 4224
+limit_bottom = 3200
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="Player" parent="." instance=ExtResource("1_q4ndm")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Ant" parent="Enemies" instance=ExtResource("5_861rq")]
+position = Vector2(-288, 117)
+rotation = 0.164915
+
+[node name="Ant2" parent="Enemies" instance=ExtResource("5_861rq")]
+position = Vector2(1222, 360)
+rotation = -2.17197
+
+[node name="Ant3" parent="Enemies" instance=ExtResource("5_861rq")]
+position = Vector2(755, -687)
+rotation = 1.58743
+
+[node name="Ant4" parent="Enemies" instance=ExtResource("5_861rq")]
+position = Vector2(-580, -746)
+rotation = -2.36784
 
 [node name="MainCanvasLayer" parent="." instance=ExtResource("4_anaq4")]
