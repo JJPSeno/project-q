@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyiwx1cymfxbb"]
+[gd_scene load_steps=19 format=3 uid="uid://dyiwx1cymfxbb"]
 
 [ext_resource type="Texture2D" uid="uid://c4d0vg1d56vsq" path="res://Assets/Enemy/Ant/enemy-body.png" id="1_b30m6"]
 [ext_resource type="Script" path="res://Enemy/Ant/ant.gd" id="1_d8g6l"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0m3fnpf3kwuj" path="res://Assets/Enemy/Ant/enemy-neck.png" id="4_p31q6"]
 [ext_resource type="PackedScene" uid="uid://bs5buk8blx3sj" path="res://Components/shootable/shootable.tscn" id="7_aaoce"]
 [ext_resource type="PackedScene" uid="uid://cg87huf34jy1q" path="res://Components/damageable/damageable.tscn" id="8_8fgnt"]
+[ext_resource type="PackedScene" uid="uid://b7v3ldej3bon" path="res://Components/aggroable/aggroable.tscn" id="9_ip8ni"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fto2"]
 radius = 19.0
@@ -88,9 +89,17 @@ _data = {
 radius = 19.0
 height = 46.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjslh"]
+radius = 251.645
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqpgu"]
+radius = 389.001
+
 [node name="Ant" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 23
+collision_mask = 31
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_d8g6l")
 
 [node name="Body" type="Node2D" parent="."]
@@ -155,3 +164,29 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_qqxiv")
 
 [node name="Damageable" parent="." instance=ExtResource("8_8fgnt")]
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+avoidance_enabled = true
+
+[node name="RecalculationTimer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Aggroable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("9_ip8ni")]
+parent = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggroable/AggroRange" index="0"]
+shape = SubResource("CircleShape2D_kjslh")
+debug_color = Color(0.975531, 0, 0.418706, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggroable/DeaggroRange" index="0"]
+shape = SubResource("CircleShape2D_dqpgu")
+debug_color = Color(4.81307e-07, 0.616686, 0.591326, 0.42)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Navigation/RecalculationTimer" to="." method="_on_recalculation_timer_timeout"]
+
+[editable path="Aggroable"]

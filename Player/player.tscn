@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5liwdgjjhcr2"]
+[gd_scene load_steps=17 format=3 uid="uid://5liwdgjjhcr2"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_t54ku"]
 [ext_resource type="PackedScene" uid="uid://dff0j6n77jhyg" path="res://Controllers/PlayerMovementController/player_movement_controller.tscn" id="2_qxbrg"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4s4ypiv7hikj" path="res://Controllers/PlayerAbilityController/player_ability_controller.tscn" id="6_hsx6x"]
 [ext_resource type="Texture2D" uid="uid://c08sui0c2gn88" path="res://Assets/Player/player.png" id="7_78jdo"]
 [ext_resource type="Resource" uid="uid://bdypsqqlqj8c0" path="res://States/InputAbilityStates/wait.tres" id="7_u0ssl"]
+[ext_resource type="Resource" uid="uid://bxijoqc6vhfnh" path="res://States/InputAbilityStates/spike.tres" id="9_syksp"]
 [ext_resource type="Resource" uid="uid://s44d6qf1amd4" path="res://States/InputAbilityStates/dash.tres" id="10_251nf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4a0ob"]
@@ -39,6 +40,7 @@ input_movement_states = {
 parent = NodePath("..")
 input_ability_states = {
 "dash": ExtResource("10_251nf"),
+"spike": ExtResource("9_syksp"),
 "wait": ExtResource("7_u0ssl")
 }
 

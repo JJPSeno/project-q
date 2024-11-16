@@ -13,3 +13,5 @@ DIMENSION_SIZE = 150.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]

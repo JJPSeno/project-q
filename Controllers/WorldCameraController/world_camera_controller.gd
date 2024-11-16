@@ -3,8 +3,8 @@ extends Node2D
 
 @export var MAX_DISTANCE : float = 100
 @export var SMOOTH_SPEED : float = 6
-@onready var player_camera: Camera2D = %PlayerCamera
-@onready var world_camera: Camera2D = %WorldCamera
+@export var player_camera: Camera2D
+@export var world_camera: Camera2D
 @export var player_node : CharacterBody2D
 var world_node : Node2D
 var mouse_position : Vector2

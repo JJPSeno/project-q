@@ -5,10 +5,6 @@ var ability_states : Dictionary
 var current_state_name : String
 var ability_controller : PlayerAbilityController
 var parent : Node2D
-#@export var name : String
-#@export var id : int
-#@export var input_name : String
-#@export var signal_name : String
 
 
 func _ready() -> void:
@@ -19,7 +15,8 @@ func _ready() -> void:
 
 func change_state(state_name: String) -> void:
 	current_state_name = state_name
-
+	EventBus.emit_signal(ability_states[current_state_name].signal_name)
+	
 	
 func _physics_process(_delta: float) -> void:
 	pass

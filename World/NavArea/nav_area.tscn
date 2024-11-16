@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://78wahys77hm4"]
+
+[ext_resource type="Texture2D" uid="uid://bcswregiew64q" path="res://Assets/Placeholder_Textures/Dark/texture_08.png" id="1_aqk0a"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_drrhe"]
+vertices = PackedVector2Array(129, 129.07, -130.031, 130.922, -130.961, -130, 129, -130)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-141, -140, 139, -140, 139, 139, -140, 141)])
+
+[node name="NavArea" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_aqk0a")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_drrhe")

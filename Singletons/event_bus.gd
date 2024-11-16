@@ -16,4 +16,10 @@ signal change_to_arrow_cursor
 #region ability signals
 signal no_cast
 signal dash_cast
+signal spike_cast
+#endregion
+
+#region spike signals
+signal spike_hit
+signal spike_traversed
 #endregion

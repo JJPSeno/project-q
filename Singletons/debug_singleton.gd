@@ -14,3 +14,5 @@ func _input(event: InputEvent) -> void:
 			EventBus.change_to_arrow_cursor.emit()
 		elif event.is_action_pressed("debug_3"):
 			EventBus.change_to_box_cursor.emit()
+		elif event.is_action_pressed("debug_4"):
+			EventBus.spike_hit.emit()
