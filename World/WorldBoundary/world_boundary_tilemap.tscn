@@ -1,13 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://j437ndt56laa"]
+[gd_scene load_steps=7 format=3 uid="uid://j437ndt56laa"]
 
 [ext_resource type="PackedScene" uid="uid://kaba60j2a0aw" path="res://World/WorldBoundary/world_boundary.tscn" id="1_inf5k"]
+[ext_resource type="Texture2D" uid="uid://bcswregiew64q" path="res://Assets/Placeholder_Textures/Dark/texture_08.png" id="2_mjith"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7ea6g"]
 scenes/1/scene = ExtResource("1_inf5k")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vlipj"]
+vertices = PackedVector2Array(128, 128, -128, 128, -128, -128, 128, -128)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hu8ie"]
+texture = ExtResource("2_mjith")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0)
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vlipj")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_cuu3u"]
 tile_size = Vector2i(256, 256)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetScenesCollectionSource_7ea6g")
+sources/1 = SubResource("TileSetAtlasSource_hu8ie")
 
 [node name="WorldBoundaryTilemap" type="TileMapLayer"]
 tile_set = SubResource("TileSet_cuu3u")

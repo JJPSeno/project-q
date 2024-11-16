@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=4 uid="uid://bgd5f5l8jptkc"]
+
+[ext_resource type="PackedScene" uid="uid://j437ndt56laa" path="res://World/WorldBoundary/world_boundary_tilemap.tscn" id="1_eir3y"]
+[ext_resource type="PackedScene" uid="uid://bslob6terfaas" path="res://Controllers/WorldCameraController/world_camera_controller.tscn" id="2_ii6pp"]
+[ext_resource type="PackedScene" uid="uid://lhqm11dande5" path="res://World/Obstacles/obstacle_tilemap.tscn" id="2_jnq14"]
+[ext_resource type="PackedScene" uid="uid://5liwdgjjhcr2" path="res://Player/player.tscn" id="3_08nsi"]
+[ext_resource type="PackedScene" uid="uid://7t16qx7bdmoo" path="res://GUI/MainCanvasLayer/main_canvas_layer.tscn" id="5_0m431"]
+
+[node name="World2" type="Node2D"]
+
+[node name="WorldBoundaryTilemap" parent="." instance=ExtResource("1_eir3y")]
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAQD+//3/AAAAAAAAAQD///3/AAAAAAAAAQAAAP3/AAAAAAAAAQABAP3/AAAAAAAAAQACAP3/AAAAAAAAAQACAP7/AAAAAAAAAQACAP//AAAAAAAAAQACAAAAAAAAAAAAAQACAAEAAAAAAAAAAQACAAIAAAAAAAAAAQABAAIAAAAAAAAAAQAAAAIAAAAAAAAAAQD//wIAAAAAAAAAAQD+/wIAAAAAAAAAAQD9/wIAAAAAAAAAAQD9/wEAAAAAAAAAAQD9/wAAAAAAAAAAAQD9////AAAAAAAAAQD9//7/AAAAAAAAAQD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAABAP//AQAAAAAAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAP//AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAD+////AQAAAAAAAAA=")
+
+[node name="ObstacleTilemap" parent="." instance=ExtResource("2_jnq14")]
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAQA=")
+
+[node name="WorldCameraController" parent="." node_paths=PackedStringArray("player_camera", "world_camera", "player_node") instance=ExtResource("2_ii6pp")]
+player_camera = NodePath("PlayerCamera")
+world_camera = NodePath("WorldCamera")
+player_node = NodePath("../Player")
+
+[node name="WorldCamera" type="Camera2D" parent="WorldCameraController"]
+unique_name_in_owner = true
+enabled = false
+
+[node name="PlayerCamera" type="Camera2D" parent="WorldCameraController"]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("3_08nsi")]
+position = Vector2(-332, 286)
+
+[node name="MainCanvasLayer" parent="." instance=ExtResource("5_0m431")]

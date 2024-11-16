@@ -7,6 +7,7 @@ const OBSTACLE_MAT = preload("res://World/Obstacles/obstacle_mat.tres")
 @export var DIMENSION_SIZE := 200.0
 @export var TEXTURE_OFFSET := 500
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var navigation_obstacle_2d: NavigationObstacle2D = $NavigationObstacle2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +27,7 @@ func _ready() -> void:
 	polygon_node.material = OBSTACLE_MAT
 	add_child(polygon_node)
 	collision_polygon_2d.polygon = polygon_node.polygon
-
+	navigation_obstacle_2d.vertices = polygon_node.polygon
 
 func sort_clockwise(a, b):
 	return a.angle() < b.angle()
