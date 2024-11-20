@@ -169,6 +169,7 @@ shape = SubResource("CapsuleShape2D_qqxiv")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 avoidance_enabled = true
+debug_enabled = true
 
 [node name="RecalculationTimer" type="Timer" parent="Navigation"]
 wait_time = 0.1
