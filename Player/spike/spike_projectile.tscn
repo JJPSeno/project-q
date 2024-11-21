@@ -24,18 +24,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn7qq"]
-size = Vector2(9, 12)
+size = Vector2(7, 12)
 
 [node name="SpikeProjectile" type="Area2D"]
 script = ExtResource("1_s7if0")
+spike_speed = 800.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(-5, -1)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_m832k")
 animation = &"shooting"
 autoplay = "shooting"
 offset = Vector2(0, -4.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -8)
+position = Vector2(2, -0.5)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_bn7qq")
