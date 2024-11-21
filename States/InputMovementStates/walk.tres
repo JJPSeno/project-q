@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MovementState" load_steps=2 format=3 uid="uid://7k4h71634wf7"]
+
+[ext_resource type="Script" path="res://States/InputMovementStates/input_movement_state.gd" id="1_blkpx"]
+
+[resource]
+script = ExtResource("1_blkpx")
+name = "walk"
+id = 1
+speed = 300.0
+camera_zoom = Vector2(1, 1)
+camera_speed = 10.0
+acceleration = 8.0
+friction = 1.0

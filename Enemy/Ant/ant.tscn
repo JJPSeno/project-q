@@ -1,0 +1,193 @@
+[gd_scene load_steps=19 format=3 uid="uid://dyiwx1cymfxbb"]
+
+[ext_resource type="Texture2D" uid="uid://c4d0vg1d56vsq" path="res://Assets/Enemy/Ant/enemy-body.png" id="1_b30m6"]
+[ext_resource type="Script" path="res://Enemy/Ant/ant.gd" id="1_d8g6l"]
+[ext_resource type="Texture2D" uid="uid://ca1ri2iwnpdan" path="res://Assets/Enemy/Ant/enemy-head.png" id="2_bc12i"]
+[ext_resource type="Script" path="res://Enemy/Ant/composite_sprite.gd" id="2_o3ied"]
+[ext_resource type="Texture2D" uid="uid://bu4h8yq628yr4" path="res://Assets/Enemy/Ant/enemy-legs.png" id="3_8dqye"]
+[ext_resource type="Texture2D" uid="uid://b0m3fnpf3kwuj" path="res://Assets/Enemy/Ant/enemy-neck.png" id="4_p31q6"]
+[ext_resource type="PackedScene" uid="uid://bs5buk8blx3sj" path="res://Components/shootable/shootable.tscn" id="7_aaoce"]
+[ext_resource type="PackedScene" uid="uid://cg87huf34jy1q" path="res://Components/damageable/damageable.tscn" id="8_8fgnt"]
+[ext_resource type="PackedScene" uid="uid://b7v3ldej3bon" path="res://Components/aggroable/aggroable.tscn" id="9_ip8ni"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fto2"]
+radius = 19.0
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axmbk"]
+radius = 12.0
+height = 36.0
+
+[sub_resource type="Animation" id="Animation_wmnkw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy-legs:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.202716]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.38419e-07, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_mtfer"]
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Head:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.450625, 0.450625, 0.450625, 0.120742),
+"update": 0,
+"values": [Vector2(-2.38419e-07, -1), Vector2(-7, -1), Vector2(-7, -1), Vector2(7, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_cr5rs"]
+resource_name = "skitter"
+length = 0.15
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy-legs:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.202716, 0.202458]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryy1k"]
+_data = {
+"RESET": SubResource("Animation_wmnkw"),
+"attack": SubResource("Animation_mtfer"),
+"skitter": SubResource("Animation_cr5rs")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqxiv"]
+radius = 19.0
+height = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjslh"]
+radius = 251.645
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqpgu"]
+radius = 389.001
+
+[node name="Ant" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 31
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_d8g6l")
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+script = ExtResource("2_o3ied")
+
+[node name="Enemy-legs" type="Sprite2D" parent="Body"]
+position = Vector2(1.66667, 8)
+rotation = -0.202716
+texture = ExtResource("3_8dqye")
+
+[node name="Enemy-body" type="Sprite2D" parent="Body"]
+position = Vector2(1.66667, 8)
+texture = ExtResource("1_b30m6")
+
+[node name="Enemy-neck" type="Sprite2D" parent="Body"]
+position = Vector2(0.333334, -30.6667)
+texture = ExtResource("4_p31q6")
+
+[node name="BodyShootable" parent="Body" instance=ExtResource("7_aaoce")]
+position = Vector2(1.66667, -6.03332e-06)
+rotation = -1.5708
+scale = Vector2(1.66667, 1.66667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/BodyShootable"]
+position = Vector2(-4, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7fto2")
+debug_color = Color(0.98546, 0, 0.333541, 0.42)
+
+[node name="Head" type="Node2D" parent="."]
+position = Vector2(-2.38419e-07, -1)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+
+[node name="Enemy-head" type="Sprite2D" parent="Head"]
+position = Vector2(1.66667, -38.3333)
+texture = ExtResource("2_bc12i")
+
+[node name="HeadShootable" parent="Head" instance=ExtResource("7_aaoce")]
+position = Vector2(1.6665, -45)
+rotation = -1.5708
+scale = Vector2(1.66667, 1.66667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/HeadShootable"]
+position = Vector2(-3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_axmbk")
+debug_color = Color(0.98546, 0, 0.333541, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Body")
+libraries = {
+"": SubResource("AnimationLibrary_ryy1k")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_qqxiv")
+
+[node name="Damageable" parent="." instance=ExtResource("8_8fgnt")]
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="RecalculationTimer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Aggroable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("9_ip8ni")]
+parent = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggroable/AggroRange" index="0"]
+shape = SubResource("CircleShape2D_kjslh")
+debug_color = Color(0.975531, 0, 0.418706, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggroable/DeaggroRange" index="0"]
+shape = SubResource("CircleShape2D_dqpgu")
+debug_color = Color(4.81307e-07, 0.616686, 0.591326, 0.42)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Navigation/RecalculationTimer" to="." method="_on_recalculation_timer_timeout"]
+
+[editable path="Aggroable"]

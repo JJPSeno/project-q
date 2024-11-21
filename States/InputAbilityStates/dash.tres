@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InputAbilityState" load_steps=2 format=3 uid="uid://s44d6qf1amd4"]
+
+[ext_resource type="Script" path="res://States/InputAbilityStates/input_ability_state.gd" id="1_oexcl"]
+
+[resource]
+script = ExtResource("1_oexcl")
+name = "dash"
+id = 1
+signal_name = "dash_cast"

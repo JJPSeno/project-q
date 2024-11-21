@@ -8,7 +8,8 @@ const DEBUG_ITEM = preload("res://GUI/Debug/debug_item.tscn")
 func _ready() -> void:
 	add_debug_item("speed","value", EventBus.speed_updated)
 	add_debug_item("global pos","value", EventBus.position_updated)
-	add_debug_item("player state","run", EventBus.player_state_updated)
+	add_debug_item("player mov state","value", EventBus.player_movement_state_updated)
+	add_debug_item("player ability state","value", EventBus.player_ability_state_updated)
 	add_debug_item("camera pos","value", EventBus.camera_pos_updated)
 	add_debug_item("mouse pos","value", EventBus.mouse_pos_updated)
 
