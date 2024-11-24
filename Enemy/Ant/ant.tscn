@@ -97,7 +97,7 @@ radius = 389.001
 
 [node name="Ant" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
-collision_mask = 31
+collision_mask = 30
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_d8g6l")
@@ -169,11 +169,6 @@ shape = SubResource("CapsuleShape2D_qqxiv")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 avoidance_enabled = true
-debug_enabled = true
-
-[node name="RecalculationTimer" type="Timer" parent="Navigation"]
-wait_time = 0.1
-autostart = true
 
 [node name="Aggroable" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("9_ip8ni")]
 parent = NodePath("..")
@@ -186,8 +181,6 @@ debug_color = Color(0.975531, 0, 0.418706, 0.42)
 shape = SubResource("CircleShape2D_dqpgu")
 debug_color = Color(4.81307e-07, 0.616686, 0.591326, 0.42)
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[connection signal="timeout" from="Navigation/RecalculationTimer" to="." method="_on_recalculation_timer_timeout"]
+[connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 
 [editable path="Aggroable"]
