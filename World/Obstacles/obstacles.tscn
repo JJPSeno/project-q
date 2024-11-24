@@ -6,18 +6,12 @@
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_paaf0")
-isGenerating = false
-MIN_POINTS = 12
-MAX_POINTS = 16
-DIMENSION_SIZE = 150.0
+MAX_POINTS = 4
+DIMENSION_SIZE = 100.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-100, 100, -100, -100, 100, -100, 100, 100)
+polygon = PackedVector2Array(-128, 128, -128, -128, 128, -128, 128, 128)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 200.0
-vertices = PackedVector2Array(-100, 100, -100, -100, 100, -100, 100, 100)
-affect_navigation_mesh = true
-carve_navigation_mesh = true
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

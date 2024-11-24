@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdeq4pkx3vs3u"]
+
+[ext_resource type="Texture2D" uid="uid://c0tvbdpajmqaw" path="res://Assets/Placeholder_Textures/Light/texture_11.png" id="1_ilumq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anaxq"]
+size = Vector2(256, 256)
+
+[node name="DumbObstacle" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 90
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ilumq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_anaxq")

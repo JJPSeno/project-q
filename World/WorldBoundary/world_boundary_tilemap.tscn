@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://j437ndt56laa"]
+[gd_scene load_steps=11 format=3 uid="uid://j437ndt56laa"]
 
 [ext_resource type="PackedScene" uid="uid://kaba60j2a0aw" path="res://World/WorldBoundary/world_boundary.tscn" id="1_inf5k"]
 [ext_resource type="Texture2D" uid="uid://bcswregiew64q" path="res://Assets/Placeholder_Textures/Dark/texture_08.png" id="2_mjith"]
+[ext_resource type="PackedScene" uid="uid://77om2ux5nt02" path="res://World/Obstacles/obstacles.tscn" id="3_7hnho"]
+[ext_resource type="PackedScene" uid="uid://bdeq4pkx3vs3u" path="res://World/Obstacles/dumb_obstacle.tscn" id="4_2bfge"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7ea6g"]
 scenes/1/scene = ExtResource("1_inf5k")
@@ -34,11 +36,20 @@ texture_region_size = Vector2i(256, 256)
 2:3/0 = 0
 3:3/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vhv8g"]
+scenes/1/scene = ExtResource("3_7hnho")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ewr7v"]
+scenes/1/scene = ExtResource("4_2bfge")
+
 [sub_resource type="TileSet" id="TileSet_cuu3u"]
 tile_size = Vector2i(256, 256)
+physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetScenesCollectionSource_7ea6g")
 sources/1 = SubResource("TileSetAtlasSource_hu8ie")
+sources/2 = SubResource("TileSetScenesCollectionSource_vhv8g")
+sources/3 = SubResource("TileSetScenesCollectionSource_ewr7v")
 
 [node name="WorldBoundaryTilemap" type="TileMapLayer"]
 tile_set = SubResource("TileSet_cuu3u")
