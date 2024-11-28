@@ -2,10 +2,11 @@ class_name PlayerAbilityController
 extends Node
 
 
+const SPIKE_PROJECTILE = preload("res://Player/SpikeProjectile/spike_projectile.tscn")
 @export var parent : CharacterBody2D
 @export var input_ability_states : Dictionary
+@export var bullet_origin : Marker2D
 @onready var input_ability_state_machine: InputAbilityStateMachine = $InputAbilityStateMachine
-const SPIKE_PROJECTILE = preload("res://Player/spike/spike_projectile.tscn")
 
 
 func _ready() -> void:
@@ -21,6 +22,9 @@ func _input(event: InputEvent) -> void:
 
 func _on_spike_cast():
 	var spike_instance = SPIKE_PROJECTILE.instantiate()
-	spike_instance.position = parent.position
-	spike_instance.rotation_degrees = parent.rotation_degrees
-	get_parent().add_child(spike_instance)
+	spike_instance.rotation = parent.rotation
+	spike_instance.position = bullet_origin.global_position
+	var projectile_space = get_node('../../ProjectileSpace')
+	if projectile_space != null:
+		projectile_space.add_child(spike_instance)
+		

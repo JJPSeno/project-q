@@ -76,11 +76,15 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="Player" parent="." instance=ExtResource("1_q4ndm")]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Ant" parent="Enemies" instance=ExtResource("5_861rq")]
 position = Vector2(329, -117)
 rotation = 0.164915
+
+[node name="ProjectileSpace" type="Node2D" parent="." groups=["projectile_space"]]
 
 [node name="MainCanvasLayer" parent="." instance=ExtResource("4_anaq4")]

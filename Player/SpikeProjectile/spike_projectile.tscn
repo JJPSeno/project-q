@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cccl074q2v4gk"]
+
+[ext_resource type="Script" path="res://Player/SpikeProjectile/spike_projectile.gd" id="1_6kdv4"]
+[ext_resource type="Texture2D" uid="uid://c2ejlq2yeqnu2" path="res://Assets/Player/SpikeProjectile/spike.png" id="1_od5k8"]
+[ext_resource type="Texture2D" uid="uid://bc3naft37f3jb" path="res://Assets/Player/SpikeProjectile/planted_spike.png" id="2_leysx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qthtq"]
+size = Vector2(7, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76enq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_od5k8")
+}],
+"loop": false,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_leysx")
+}],
+"loop": true,
+"name": &"planted",
+"speed": 5.0
+}]
+
+[node name="SpikeProjectile" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 5
+script = ExtResource("1_6kdv4")
+spike_speed = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_qthtq")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_76enq")
+animation = &"flying"
+autoplay = "flying"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

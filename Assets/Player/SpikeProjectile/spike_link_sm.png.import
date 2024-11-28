@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc3naft37f3jb"
-path="res://.godot/imported/planted_spike.png-4b8d69c5bba2e8fac5111e86b65fdaa0.ctex"
+uid="uid://bhd4wgh6vde6p"
+path="res://.godot/imported/spike_link_sm.png-4bd9e8cadf53f62e4c69b0acb4dbbbce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/spike/planted_spike.png"
-dest_files=["res://.godot/imported/planted_spike.png-4b8d69c5bba2e8fac5111e86b65fdaa0.ctex"]
+source_file="res://Assets/Player/SpikeProjectile/spike_link_sm.png"
+dest_files=["res://.godot/imported/spike_link_sm.png-4bd9e8cadf53f62e4c69b0acb4dbbbce.ctex"]
 
 [params]
 

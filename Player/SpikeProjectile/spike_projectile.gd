@@ -1,9 +1,9 @@
-extends Area2D
+extends CharacterBody2D
 
-const SPIKE_LINE_TEXTURE := preload("res://Assets/Player/spike/spike_link_sm.png")
+const SPIKE_LINE_TEXTURE := preload("res://Assets/Player/SpikeProjectile/spike_link_sm.png")
 var line = Line2D.new()
 var isTrailing = false
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var player : CharacterBody2D
 @export var spike_speed := 200.0
 
@@ -14,10 +14,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	position += transform.x * spike_speed * delta
 	if isTrailing:
 		line.points[1] = to_local(player.position)
-
+	velocity = spike_speed * Vector2.from_angle(rotation)
+	move_and_slide()
 
 func _on_spike_hit() -> void:
 	isTrailing = true
