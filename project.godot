@@ -34,6 +34,7 @@ mouse_cursor/custom_image="res://Assets/Cursors/ArrowCursorSmall.png"
 
 player=""
 enemy=""
+projectile_space=""
 
 [input]
 
