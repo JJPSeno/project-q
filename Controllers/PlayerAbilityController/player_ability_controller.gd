@@ -22,6 +22,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_spike_cast():
 	var spike_instance = SPIKE_PROJECTILE.instantiate()
+	spike_instance.player = parent
 	spike_instance.rotation = parent.rotation
 	spike_instance.position = bullet_origin.global_position
 	var projectile_space = get_node('../../ProjectileSpace')

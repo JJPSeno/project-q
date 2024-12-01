@@ -20,6 +20,6 @@ signal spike_cast
 #endregion
 
 #region spike signals
-signal spike_hit
+signal spike_hit(sling_direction)
 signal spike_traversed
 #endregion
