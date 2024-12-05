@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://btggs8qcbh5a"]
+
+[ext_resource type="Script" path="res://AudioManager/audio_manager.gd" id="1_071qr"]
+[ext_resource type="AudioStream" uid="uid://dnjjf1g7argqo" path="res://Music/Make This Perv.mp3" id="2_wbboc"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_071qr")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wbboc")
+volume_db = -5.0
+autoplay = true

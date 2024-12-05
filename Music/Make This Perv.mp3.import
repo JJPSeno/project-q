@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dnjjf1g7argqo"
+path="res://.godot/imported/Make This Perv.mp3-34fa7e90afd46fe9d3d005a232a39495.mp3str"
+
+[deps]
+
+source_file="res://Music/Make This Perv.mp3"
+dest_files=["res://.godot/imported/Make This Perv.mp3-34fa7e90afd46fe9d3d005a232a39495.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

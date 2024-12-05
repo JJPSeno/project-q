@@ -16,7 +16,7 @@ func _ready() -> void:
 	EventBus.spike_traversed.connect(_on_spike_traversed)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if isTrailing:
 		line.points[1] = to_local(player.position)
 	else:
@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if(get_slide_collision_count()>0):
 			EventBus.spike_hit.emit(Vector2.from_angle(rotation).normalized())
+		await get_tree().create_timer(0.5).timeout
+		queue_free()
 
 
 func _on_spike_hit(_sling_direction) -> void:

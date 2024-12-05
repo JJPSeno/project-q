@@ -23,3 +23,7 @@ signal spike_cast
 signal spike_hit(sling_direction)
 signal spike_traversed
 #endregion
+
+#region music / sfx signals
+signal toggle_music_mute(value)
+#endregion
