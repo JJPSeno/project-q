@@ -32,7 +32,7 @@ func ability_movement_fire(delta: float) -> void:
 
 
 func enter_state() -> void:
-	print("entered dash")
+	pass
 
 
 func exit_state() -> void:

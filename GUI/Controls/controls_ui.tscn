@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf6caqt6km8j1"]
+
+[ext_resource type="Theme" uid="uid://ci02ymefjax3o" path="res://Themes/FontThemes/debug_font.tres" id="1_4kxcp"]
+
+[node name="ControlsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ControlsColumn" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ESC-Pause" type="Label" parent="MarginContainer/ControlsColumn"]
+layout_mode = 2
+theme = ExtResource("1_4kxcp")
+text = "[ESC] - Pause"
+horizontal_alignment = 2
+
+[node name="WASD-Move" type="Label" parent="MarginContainer/ControlsColumn"]
+layout_mode = 2
+theme = ExtResource("1_4kxcp")
+text = "[W/A/S/D] - Move"
+horizontal_alignment = 2
+
+[node name="Shift-Run" type="Label" parent="MarginContainer/ControlsColumn"]
+layout_mode = 2
+theme = ExtResource("1_4kxcp")
+text = "[Shift] - Run"
+horizontal_alignment = 2
+
+[node name="RMB-GrapplingHook" type="Label" parent="MarginContainer/ControlsColumn"]
+layout_mode = 2
+theme = ExtResource("1_4kxcp")
+text = "[Right Mouse Button] - Shoot grappling hook"
+horizontal_alignment = 2
+
+[node name="Space-Dash" type="Label" parent="MarginContainer/ControlsColumn"]
+layout_mode = 2
+theme = ExtResource("1_4kxcp")
+text = "[Spacebar] - Dash"
+horizontal_alignment = 2

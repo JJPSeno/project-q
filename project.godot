@@ -19,6 +19,7 @@ config/icon="res://Assets/Branding/DiamondIcon.png"
 
 DebugSingleton="*res://Singletons/debug_singleton.tscn"
 EventBus="*res://Singletons/event_bus.gd"
+AudioManager="*res://AudioManager/audio_manager.tscn"
 
 [debug]
 

@@ -18,7 +18,7 @@ func ability_movement_fire(_delta: float) -> void:
 
 
 func enter_state() -> void:
-	print("entered waiting")
+	pass
 
 
 func exit_state() -> void:

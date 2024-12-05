@@ -19,3 +19,7 @@ func toogle_pause():
 	get_tree().paused = visible
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if visible \
 		else Input.MOUSE_MODE_CONFINED
+
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	EventBus.toggle_music_mute.emit(toggled_on)

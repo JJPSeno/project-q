@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://GUI/MainCanvasLayer/main_canvas_layer.gd" id="1_y35jt"]
 [ext_resource type="PackedScene" uid="uid://bt3gkxaqlb0wy" path="res://GUI/Debug/debug_ui.tscn" id="2_a2c84"]
 [ext_resource type="Script" path="res://GUI/MainCanvasLayer/cursor_controller.gd" id="2_n47oc"]
-[ext_resource type="Theme" uid="uid://ci02ymefjax3o" path="res://Themes/FontThemes/debug_font.tres" id="3_e2l67"]
 [ext_resource type="PackedScene" uid="uid://jsn8fucdjm8c" path="res://GUI/MainCanvasLayer/Pause/pause_ui.tscn" id="4_4r1dx"]
+[ext_resource type="PackedScene" uid="uid://bf6caqt6km8j1" path="res://GUI/Controls/controls_ui.tscn" id="5_f0bxg"]
 
 [node name="MainCanvasLayer" type="CanvasLayer"]
 process_mode = 3
@@ -13,24 +13,7 @@ script = ExtResource("1_y35jt")
 [node name="CursorController" type="Node" parent="."]
 script = ExtResource("2_n47oc")
 
-[node name="Controls" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Label" type="Label" parent="Controls"]
-layout_mode = 0
-offset_left = -77.0
-offset_top = 12.0
-offset_right = 22.0
-offset_bottom = 35.0
-theme = ExtResource("3_e2l67")
-text = "[ ESC ] - Pause"
-horizontal_alignment = 2
+[node name="ControlsUI" parent="." instance=ExtResource("5_f0bxg")]
 
 [node name="DebugUI" parent="." instance=ExtResource("2_a2c84")]
 

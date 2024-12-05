@@ -33,10 +33,8 @@ func _on_dash_cast() -> void:
 		
 func _on_spike_hit(sling_direction) -> void:
 	grapple_vector = sling_direction
-	print(grapple_vector)
 	ability_movement_state_machine.change_state("grapple")
 
 func _on_no_cast() -> void:
 	reinitialize()
-	print(grapple_vector)
 	ability_movement_state_machine.change_state("wait")
