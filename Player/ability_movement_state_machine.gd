@@ -3,6 +3,7 @@ extends Node
 
 
 @export var movement_controller : PlayerMovementController
+
 var movement_states : Array[Node]
 var current_state_name : String
 var parent : Node2D

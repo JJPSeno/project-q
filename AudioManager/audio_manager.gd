@@ -1,6 +1,6 @@
 extends Node
 
-@onready var music_player: AudioStreamPlayer2D = $MusicPlayer
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 
 func _ready() -> void:

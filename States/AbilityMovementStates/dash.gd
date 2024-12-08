@@ -1,10 +1,10 @@
 extends AbilityMovementState
 
 
-@export var speed = 3000.0
-@export var acceleration := 4500.0
+@export var speed = 900.0
+@export var acceleration := 90000.0
 @export var camera_zoom := Vector2(0.9, 0.9)
-@export var cemra_speed := 6
+@export var camera_speed := 6
 @export var friction := 1
 @export var state_machine : AbilityMovementStateMachine
 var direction := Vector2.ZERO
@@ -14,6 +14,7 @@ var new_velocity := Vector2.ZERO
 
 
 func ability_movement_fire(delta: float) -> void:
+	EventBus.camera_zoom_updated.emit(camera_zoom, camera_speed)
 	direction = Input.get_vector("left","right","up","down")
 	target_velocity = direction * speed
 	previous_velocity = state_machine.parent.velocity
@@ -28,6 +29,7 @@ func ability_movement_fire(delta: float) -> void:
 		state_machine.parent.velocity = new_velocity
 	
 	state_machine.parent.move_and_slide()
+	await get_tree().create_timer(0.3).timeout
 	EventBus.no_cast.emit()
 
 

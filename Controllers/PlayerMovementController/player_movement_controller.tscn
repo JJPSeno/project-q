@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dff0j6n77jhyg"]
+[gd_scene load_steps=8 format=3 uid="uid://dff0j6n77jhyg"]
 
 [ext_resource type="Script" path="res://Player/input_movement_state_machine.gd" id="1_ceiam"]
 [ext_resource type="Script" path="res://Controllers/PlayerMovementController/player_movement_controller.gd" id="1_makro"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" path="res://States/AbilityMovementStates/dash.gd" id="4_8amhq"]
 [ext_resource type="Script" path="res://States/AbilityMovementStates/wait.gd" id="5_aqgcw"]
 [ext_resource type="Script" path="res://States/AbilityMovementStates/grapple.gd" id="5_wrey1"]
+[ext_resource type="AudioStream" uid="uid://xfswju77kpnk" path="res://SFX/footsteps.wav" id="7_48ihv"]
 
-[node name="PlayerMovementController" type="Node"]
+[node name="PlayerMovementController" type="Node" node_paths=PackedStringArray("ability_sfx", "footsteps_sfx")]
 script = ExtResource("1_makro")
+ability_sfx = NodePath("AbilitySFX")
+footsteps_sfx = NodePath("FootstepsSFX")
 
 [node name="InputMovementStateMachine" type="Node" parent="."]
 script = ExtResource("1_ceiam")
@@ -28,3 +31,9 @@ state_machine = NodePath("..")
 [node name="wait" type="Node2D" parent="AbilityMovementStateMachine" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("5_aqgcw")
 state_machine = NodePath("..")
+
+[node name="FootstepsSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_48ihv")
+volume_db = -25.0
+
+[node name="AbilitySFX" type="AudioStreamPlayer" parent="."]

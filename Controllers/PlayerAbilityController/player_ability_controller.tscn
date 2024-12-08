@@ -8,3 +8,5 @@ script = ExtResource("1_wvmhy")
 
 [node name="InputAbilityStateMachine" type="Node" parent="."]
 script = ExtResource("2_7sdvk")
+
+[node name="AbilitySFX" type="AudioStreamPlayer" parent="."]
