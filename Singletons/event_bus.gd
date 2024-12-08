@@ -14,6 +14,7 @@ signal change_to_box_cursor
 signal change_to_arrow_cursor
 
 #region ability signals
+signal none
 signal no_cast
 signal dash_cast
 signal spike_cast

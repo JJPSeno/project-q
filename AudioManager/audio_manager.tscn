@@ -6,7 +6,7 @@
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_071qr")
 
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_wbboc")
 volume_db = -5.0
 autoplay = true

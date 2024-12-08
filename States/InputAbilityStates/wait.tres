@@ -6,4 +6,4 @@
 script = ExtResource("1_1o8dt")
 name = "wait"
 id = 0
-signal_name = ""
+signal_name = "none"

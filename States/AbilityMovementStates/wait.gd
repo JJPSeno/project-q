@@ -1,9 +1,9 @@
 extends AbilityMovementState
 
 
-@export var speed = 3000.0
-@export var acceleration := 4500.0
-@export var camera_zoom := Vector2(0.9, 0.9)
+@export var speed = 1
+@export var acceleration := 1
+@export var camera_zoom := Vector2(1, 1)
 @export var cemra_speed := 6
 @export var friction := 1
 @export var state_machine : AbilityMovementStateMachine

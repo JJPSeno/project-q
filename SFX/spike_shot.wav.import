@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b5dxthgfq4s8d"
-path="res://.godot/imported/spike_planted.wav-3db6a1ead0cb965331fd7503a9676b35.sample"
+uid="uid://g5j7oomma38a"
+path="res://.godot/imported/spike_shot.wav-d1144fd31dd2462a78d57bc51ec28ac3.sample"
 
 [deps]
 
-source_file="res://SFX/spike_planted.wav"
-dest_files=["res://.godot/imported/spike_planted.wav-3db6a1ead0cb965331fd7503a9676b35.sample"]
+source_file="res://SFX/spike_shot.wav"
+dest_files=["res://.godot/imported/spike_shot.wav-d1144fd31dd2462a78d57bc51ec28ac3.sample"]
 
 [params]
 
